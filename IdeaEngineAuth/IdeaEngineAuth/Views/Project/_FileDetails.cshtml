@@ -1,0 +1,15 @@
+﻿@model IEnumerable<FileLink>
+
+@if (Model != null && Model.Any())
+{
+    <dt>
+        @Html.Label("Files")
+    </dt>
+
+    foreach (var file in Model)
+    {
+        <dd>
+            @Html.ActionLink(file.FileName, "File", "Download", new { id = file.ID }, null)
+        </dd>
+    }
+}

@@ -1,0 +1,37 @@
+﻿@model EmissaryOverviewList
+
+<table id="emissary_table" class="table">
+    <thead>
+        <tr class="idea_engine_header_row">
+            <th class="idea_engine_th" style="border-top-left-radius: 8px; width:120px;">Name</th>
+            <th class="idea_engine_th" style="width:10%;">Domain ID</th>
+            <th class="idea_engine_th" style="width:10%;">Admin</th>
+            <th class="idea_engine_th" style="width:10%;">Ambassador</th>
+            <th class="idea_engine_th" style="width:90px; text-align: center; border-top-right-radius: 8px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr class="idea_engine_row">
+                @if (item.CanViewDetails())
+                {
+                    <td class="idea_engine_row_cell"><a class="idea_engine_row_cell_link" href="Emissary/Details/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a></td>
+                    <td class="idea_engine_row_cell"><a class="idea_engine_row_cell_link" href="Emissary/Details/@item.ID">@Html.DisplayFor(modelItem => item.Domain_ID)</a></td>
+                    <td class="idea_engine_row_cell"><a class="idea_engine_row_cell_link" href="Emissary/Details/@item.ID">@Html.ToYesNoString(item.Admin)</a></td>
+                    <td class="idea_engine_row_cell"><a class="idea_engine_row_cell_link" href="Emissary/Details/@item.ID">@Html.ToYesNoString(item.Ambassador)</a></td>
+                }
+                else
+                {
+                    <td class="idea_engine_row_cell"><div class="idea_engine_row_cell_link">@Html.DisplayFor(modelItem => item.Name)</div></td>
+                    <td class="idea_engine_row_cell"><div class="idea_engine_row_cell_link">@Html.DisplayFor(modelItem => item.Domain_ID)</div></td>
+                    <td class="idea_engine_row_cell"><div class="idea_engine_row_cell_link">@Html.ToYesNoString(item.Admin)</div></td>
+                    <td class="idea_engine_row_cell"><div class="idea_engine_row_cell_link">@Html.ToYesNoString(item.Ambassador)</div></td>
+                }
+                    <td align="center">
+                        @Html.Partial("_ListActions", item)
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

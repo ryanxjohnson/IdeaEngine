@@ -1,0 +1,175 @@
+﻿@model ProjectEditViewModel
+           
+    <div style="display: table-row">
+        <div style="display: table-cell; float:left;">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ID)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, "Project Title (100 char max)", htmlAttributes: new { }) <br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", maxlength = 100, disabled="disabled" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Summary, "Summary (500 char max)", htmlAttributes: new {  })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Summary, new { @class = "form-control", maxlength = 500, @cols = 100, rows = 3, disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.Summary, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, "Description", htmlAttributes: new {  })
+                    <div class="col-md-10">
+                        @if (Model.CurrentUser.CanEditProjectIdea(Model))
+                        {
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @cols = 100, @rows = 15 })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        }
+                        else
+                        {
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @cols = 100, @rows = 15, disabled = "disabled"})
+                            
+                        }
+                    </div>
+                </div>
+
+                @if (Model.Contributor == null)
+                {
+                    Model.Contributor = Model.CurrentUser;
+                }
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Contributor.Name, "Submitted By", htmlAttributes: new { })
+                    <div class="col-md-10">
+                        @Model.Contributor.getName()
+                    </div>
+                </div>
+                
+                @if (Model.DateSubmitted != null)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateSubmitted, "Date Submitted", htmlAttributes: new { })
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.DateSubmitted)
+                        </div>
+                    </div>
+                }
+
+                @if (Model.DateAssigned != null)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateAssigned, "Date Assigned", htmlAttributes: new { })
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.DateAssigned)
+                        </div>
+                    </div>
+                }
+
+                @if (Model.DateRevised != null)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateRevised, "Date Last Revised", htmlAttributes: new { })
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.DateRevised)
+                        </div>
+                    </div>
+                }
+
+
+            </div> <!-- end div form -->
+        </div> <!-- end div table cell -->
+        <div align="left" style="padding-left: 4em; float: right; display: table-cell;">
+
+            @Html.Partial("_Notes")
+
+            <div style="display: table-row">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Files, "Project Files", htmlAttributes: new { @class = "control-label" })
+                    <div align="right">
+                        @if (Model.Files != null && Model.Files.Any())
+                        {
+                            <table>
+                                <tr>
+                                    <th>
+                                        File Name
+                                    </th>
+                                    <th>
+                                        Remove
+                                    </th>
+                                </tr>
+                                @Html.EditorFor(model => model.Files, new { htmlAttributes = new { @class = "form-control" } })
+                            </table>
+                            <br />
+                        }
+                        <div class="idea_engine_file_upload_container">
+                            <input type='file' name='null' />
+                        </div>
+                        <br />
+                        <p class="idea_engine_add_new_file" style="cursor:pointer">Add new file</p>
+                    </div>
+                </div>
+
+            </div> <!-- end div FILE ADDENDA -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.School.ID, "Assigned School:", htmlAttributes: new { })
+                <div class="col-md-10">
+                    @if (Model.CurrentUser.CanEditSchoolAssignment())
+                    {
+                        List<SchoolOverviewViewModel> list = new List<SchoolOverviewViewModel>() { Model.School };
+                        list.AddRange(Model.OtherSchools);
+                        @Html.DropDownListFor(x => x.School.ID, new SelectList(list, "ID", "Name", Model.School))
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(model => model.School.Name)
+                    }
+                </div>
+            </div>
+
+            @*@if (Model.Status != null || Model.CurrentUser.IsAdmin())*@
+            @if (Model.CurrentUser.CanEditProjectStatus(Model)) 
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Status, "Project Status:", htmlAttributes: new { })
+                    <div class="col-md-10">
+                        @if (Model.CurrentUser.IsAmbassador())
+                        {
+                            @Html.DropDownListFor(model => model.Status, Model.getStatusList())
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(model => model.Status)
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                Model.Status = "Submitted";
+                @Html.HiddenFor(model => model.Status)
+            }
+
+            @if (Model.CurrentUser.CanEditProjectAssignment())
+            {                
+                <div class="form-group">
+                    @Html.Partial("_M_N_Edit_Table", new EmissaryTuple(Model.Emissaries, Model.OtherEmissaries))
+                </div>
+            }
+            else if (Model.Emissaries != null)
+            {
+                @*This is still not quite lined up correctly*@
+                <div class="form-group">
+                    @Html.Partial("_M_N_Details", new EmissaryTuple(Model.Emissaries))
+                </div>
+            }
+
+
+
+
+        </div>
+    </div> <!-- end div TABLE -->

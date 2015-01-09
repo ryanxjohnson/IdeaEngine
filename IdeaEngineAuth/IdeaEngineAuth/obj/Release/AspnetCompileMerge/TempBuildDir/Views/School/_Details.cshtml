@@ -1,0 +1,41 @@
+﻿@model SchoolDetailsViewModel
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("School Name")
+            @*<img src="http://i.imgur.com/cmqBZ1D.png">*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.Label("Contact Name")
+            @*<img src="http://i.imgur.com/mCnVFQr.png">*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContactName)
+        </dd>
+
+        <dt>
+            @Html.Label("Email")
+            @*<img src="http://i.imgur.com/QuzkCMH.png">*@
+        </dt>
+        <dd style="max-width: 350px; overflow-wrap: break-word">
+            @Html.DisplayFor(model => model.ContactEmail)
+        </dd>
+
+        <dt>
+            @Html.Label("Phone")
+            @*<img src="http://i.imgur.com/iFHSMZd.png">*@
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContactPhone)
+        </dd>
+
+        @Html.Partial("_M_N_Details", new ProjectTuple(Model.Projects))
+        @Html.Partial("_M_N_Details", new EmissaryTuple(Model.Emissaries))
+
+    </dl>
+</div>

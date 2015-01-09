@@ -1,0 +1,12 @@
+﻿@model FileLink
+
+<tr>
+                        <td>
+                            @Html.ActionLink(Model.FileName,"File", "Download", new { id = Model.ID }, null)
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.ID)
+                            @Html.CheckBoxFor(model => model.Remove)
+                        </td>
+                    </tr>
+                    

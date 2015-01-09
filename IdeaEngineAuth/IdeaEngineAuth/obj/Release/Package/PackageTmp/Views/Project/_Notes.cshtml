@@ -1,0 +1,36 @@
+﻿@model ProjectDetailsViewModel
+
+@{
+    bool edit = (HttpContext.Current.Request.RequestContext.RouteData.Values["action"]??"").ToString().ToLowerInvariant().Equals("edit");
+}
+
+@if ( (Model.Notes != null && Model.Notes.Any()) || (edit && Model.CurrentUser.CanEditProjectStatus(Model)) )
+{
+<div>
+    <div>
+        @Html.Label("Notes")
+    </div>
+    <div class="idea_engine_note_box">
+    @if ((Model.Notes != null && Model.Notes.Any()))
+    {
+        foreach (NoteData note in Model.Notes)
+        {
+            <div class="idea_engine_note">
+                <div class="idea_engine_note_content">
+                    @Html.ToParagraphs(note.Note)
+                </div>
+                <div class="idea_engine_note_info">
+                    <div class="idea_engine_note_time">@note.Date</div>
+                    <div class="idea_engine_note_author">@note.Author.Name</div>
+                </div>
+            </div>
+        }
+    }
+    @if (edit && Model is ProjectEditViewModel && Model.CurrentUser.CanEditProjectStatus(Model))
+    {
+        @Html.Partial("_NoteEdit")
+    }
+    </div>
+</div>
+<br />
+}

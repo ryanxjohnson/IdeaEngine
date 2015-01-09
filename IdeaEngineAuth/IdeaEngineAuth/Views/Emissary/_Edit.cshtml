@@ -1,0 +1,62 @@
+﻿@model EmissaryEditViewModel
+
+    <div align="center">
+        <div align="left" class="form-horizontal" style="position: relative; width: 300px">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.LabelFor(model => model.Name, "Name", htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.LabelFor(model => model.Domain_ID, "Domain ID", htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Domain_ID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Domain_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div style="display: table-row">
+                        <div style="padding-right: 1em; display: table-cell">
+                            @Html.EditorFor(model => model.Admin, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div style="display: table-cell">
+                            @Html.LabelFor(model => model.Admin, htmlAttributes: new { @class = "control-label" })
+                        </div>
+
+                        <div style="display: table-cell">
+                            @Html.ValidationMessageFor(model => model.Admin, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div style="display: table-row">
+                        <div style="padding-right: 1em; display: table-cell">
+                            @Html.EditorFor(model => model.Ambassador, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div style="display: table-cell">
+                            @Html.LabelFor(model => model.Ambassador, htmlAttributes: new { @class = "control-label" })
+                        </div>
+
+                        <div style="display: table-cell">
+                            @Html.ValidationMessageFor(model => model.Ambassador, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @Html.Partial("_M_N_Edit", new ProjectTuple(Model.Projects, Model.OtherProjects))
+
+            @Html.Partial("_M_N_Edit", new SchoolTuple(Model.Schools, Model.OtherSchools))
+        </div>
+    </div>

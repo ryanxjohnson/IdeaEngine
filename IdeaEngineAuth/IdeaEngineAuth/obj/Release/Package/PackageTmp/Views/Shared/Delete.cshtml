@@ -1,0 +1,19 @@
+﻿@model HasID
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@Html.Partial("_Details")
+
+<div align="right">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="text-align:center">
+            @Html.ActionLink("Cancel", "Details", new { id = Model.ID }, htmlAttributes: new { @class = "btn btn-default", @style="color:black" })
+            <input type="submit" value="Confirm Delete" class="btn btn-danger" />
+        </div>
+    }
+</div>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ProjectOverviewViewModel>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">                
+               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#@ViewData["table_id"]" aria-expanded="true" aria-controls="@ViewData["table_id"]">
+                @ViewData["title"]</a>
+            </h4>
+        </div>
+        <div id="@ViewData["table_id"]" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="@ViewData["table_id"]">
+            <div class="panel-body">
+                <table id="@ViewData["table_id"]" class="table" style="width: 100%;">
+                    <thead>
+                        <tr class="idea_engine_header_row">
+                            <th class="idea_engine_th" style="padding-left: .5em; width: 100px;"><b>Status</b></th>
+                            <th class="idea_engine_th" style="width:150px;" ><b>Title</b></th>
+                            <th class="idea_engine_th" style="width:20%;"><b>Contributor</b></th>
+                            <th class="idea_engine_th" style="width:20%;"><b>Last Edited</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            bool even = false;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <tr class="idea_engine_row" onclick="document.location = 'Project/Details/@item.ID'">
+                                <td style="padding-left: .5em;">@item.Status</td>
+                                <td class="lamplist">
+                                    <span>
+                                        @if (!item.School.ID.Equals(0L))
+                                        {
+                                            <p style="font-size: 11px">
+                                                Assigned School: @item.School.Name
+                                            </p>
+
+                                        }
+                                        @item.Summary
+                                    </span>
+                                    @item.Title
+                                </td>
+                                <td>
+                                    <div >@item.Contributor.Name</div>
+                                </td>
+                                <td align="left">@item.DateRevised.Value.ToShortDateString()</td>
+                            </tr>
+                                        even = !even;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>

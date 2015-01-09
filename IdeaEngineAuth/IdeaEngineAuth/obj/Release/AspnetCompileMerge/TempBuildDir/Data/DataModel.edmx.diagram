@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e7f65b77f46a402199212e31048b1f9e" Name="Diagram1">
+        <EntityTypeShape EntityType="DataModel.Emissary" Width="1.5" PointX="12.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.EmissaryDomainID" Width="1.5" PointX="11" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.EmissaryName" Width="1.5" PointX="11" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.EmissaryRevision" Width="1.5" PointX="9.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.EmissarySchool" Width="1.5" PointX="12.625" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.File" Width="1.5" PointX="0.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Project" Width="1.5" PointX="0.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ProjectDescription" Width="1.5" PointX="4" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ProjectFile" Width="1.5" PointX="2.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ProjectRevision" Width="1.5" PointX="2.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ProjectStatu" Width="1.5" PointX="0.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ProjectSummary" Width="1.5" PointX="2.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ProjectTitle" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Revision" Width="1.5" PointX="4" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.RevisionNote" Width="1.5" PointX="4" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.School" Width="1.5" PointX="12.625" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.SchoolContactEmail" Width="1.5" PointX="11" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.SchoolContactName" Width="1.5" PointX="7.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.SchoolContactPhoneNumber" Width="1.5" PointX="11" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.SchoolName" Width="1.5" PointX="7.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.SchoolRevision" Width="1.5" PointX="9.125" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.CurrentEmissarySchool" Width="1.5" PointX="8.625" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.CurrentProjectEmissary" Width="1.5" PointX="5.375" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.CurrentProjectNote" Width="1.5" PointX="2.125" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.CurrentSchoolProject" Width="1.5" PointX="5.375" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="DataModel.FK__EmissaryR__Emiss__7D63964E" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__EmissaryS__Emiss__4AD81681" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__EmissaryD__Emiss__2FEF161B" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__EmissaryN__Emiss__7B7B4DDC" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__EmissaryR__Revis__7E57BA87" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK__EmissaryS__Revis__74CE504D" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__EmissaryS__Schoo__162F4418" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProjectFi__File___0BB1B5A5" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProjectRe__Proje__0CA5D9DE" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProjectDe__Proje__0E8E2250" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProjectFi__Proje__0F824689" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProjectRe__Revis__1446FBA6" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProjectSt__Proje__10766AC2" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProjectSu__Proje__116A8EFB" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProjectTi__Proje__125EB334" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__RevisionN__Revis__75C27486" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__SchoolRev__Revis__1BE81D6E" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__SchoolRev__Schoo__17236851" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__SchoolCon__Schoo__18178C8A" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__SchoolCon__Schoo__190BB0C3" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__SchoolCon__Schoo__52442E1F" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__SchoolNam__Schoo__1AF3F935" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DataModel.CurrentProjectFile" Width="1.5" PointX="2.125" PointY="8.875" />
+        <EntityTypeShape EntityType="DataModel.EmissaryAdmin" Width="1.5" PointX="7.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DataModel.EmissaryAmbassador" Width="1.5" PointX="7.5" PointY="2.25" />
+        <AssociationConnector Association="DataModel.FK__EmissaryA__Emiss__0B7CAB7B" />
+        <AssociationConnector Association="DataModel.FK__EmissaryA__Emiss__0E591826" />
+        <EntityTypeShape EntityType="DataModel.CurrentFileData" Width="1.5" PointX="0.5" PointY="8.25" />
+        <EntityTypeShape EntityType="DataModel.CurrentProjectData" Width="1.5" PointX="3.75" PointY="9.5" />
+        <EntityTypeShape EntityType="DataModel.CurrentSchoolData" Width="1.5" PointX="7" PointY="11.25" />
+        <EntityTypeShape EntityType="DataModel.EmissaryProject" Width="1.5" PointX="5.75" PointY="0.5" />
+        <EntityTypeShape EntityType="DataModel.SchoolProject" Width="1.5" PointX="5.625" PointY="5.375" />
+        <AssociationConnector Association="DataModel.FK__EmissaryP__Emiss__3572E547" />
+        <AssociationConnector Association="DataModel.FK__EmissaryP__Proje__36670980" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK__EmissaryP__Revis__375B2DB9" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK__SchoolPro__Proje__3943762B" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK__SchoolPro__Revis__3A379A64" />
+        <AssociationConnector Association="DataModel.FK__SchoolPro__Schoo__384F51F2" />
+        <EntityTypeShape EntityType="DataModel.CurrentEmissaryData" Width="1.5" PointX="7" PointY="9.125" />
+        <EntityTypeShape EntityType="DataModel.CurrentFileStatu" Width="1.5" PointX="0.5" PointY="10" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

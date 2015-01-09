@@ -1,0 +1,81 @@
+﻿@model ProjectDetailsViewModel
+
+<div style="display: table-row">
+    <div style="display: table-cell; width: 60%;">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Summary)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Summary)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd>
+                @Html.ToParagraphs(Model.Description)
+            </dd>
+
+            <dt>
+                @Html.Label("Submitted By")
+            </dt>
+            <dd>
+                @Model.Contributor.getName()
+            </dd>
+
+            <dt>
+                @Html.Label("Current Status")
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            <dt>
+                @Html.Label("Assigned School")
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.School.Name)
+            </dd>
+
+            @Html.Partial("_M_N_Details", new EmissaryTuple(Model.Emissaries))
+
+            <dt>
+                @Html.Label("Date Revised")
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateRevised)
+            </dd>
+
+            <dt>
+                @Html.Label("Date Submitted")
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateSubmitted)
+            </dd>
+
+            @if ( Model.DateAssigned != null )
+            {
+                <dt>
+                    @Html.Label("Date Assigned")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.DateAssigned)
+                </dd>
+            }
+
+            @Html.Partial("_FileDetails", Model.Files)
+        </dl>
+
+    </div>
+    <div style="padding-bottom: 2em; display: table-cell; width: 40%">
+        @Html.Partial("_Notes")
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model SchoolOverviewList
+
+<table id="school_table" class="table">
+    <thead>
+        <tr class="idea_engine_header_row">
+            <th class="idea_engine_th" style="width:150px; border-top-left-radius: 8px;">Name</th>
+            <th class="idea_engine_th" style="width:20%;">Contact</th>
+            <th class="idea_engine_th" style="width:20%;">Email</th>
+            <th class="idea_engine_th" style="text-align: center; width: 20%; border-top-right-radius: 8px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="idea_engine_row">
+                <td class="idea_engine_row_cell">
+                    <a class="idea_engine_row_cell_link" href="School/Details/@item.ID">
+                    <div style=" max-width: 150px">
+    @Html.DisplayFor(modelItem => item.Name)
+    </div>
+                    </a>
+            </td>
+                <td class="idea_engine_row_cell">
+                    <a class="idea_engine_row_cell_link" href="School/Details/@item.ID">
+                    <div style="max-width: 150px">
+                        @Html.DisplayFor(modelItem => item.ContactName)
+                    </div>
+                    </a>
+                </td>
+                <td>
+                    <div style="max-width: 300px; overflow:hidden;">
+                        @Html.DisplayFor(modelItem => item.ContactEmail)
+                    </div>
+                </td>
+                <td align="center">
+                    <div align="right" style="max-width: 150px">
+                        @Html.Partial("_ListActions", item)
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,37 @@
+﻿@model M_N_Tuple
+
+<table class="m_n_table" id="@Model.getLable()" data-m-n-set-name="@Model.getSetName()">
+    <tr>
+        <th class="m_n_left_cell">@Model.getTitle()</th>
+        <th class="m_n_right_cell"></th>
+    </tr>
+    @if (Model.Item1 != null)
+    {
+        foreach (var item in Model.Item1)
+        {
+            <tr class='m_n_row'>
+                <td class='m_n_left_cell'> <div class='m_n_row_name'>@item.getName()</div> </td>
+                <td class="m_n_right_cell">
+                    <input class='m_n_row_id' name='null' type='hidden' value='@item.ID'>
+                    <p class='btn btn-xs m_n_row_button'>Remove</p>
+                </td>
+            </tr>
+        }
+    }
+    <tr class="m_n_select_container">
+        <td>
+            <select class="m_n_select">
+                @if (Model.Item2 != null)
+                {
+                    foreach (var item in Model.Item2)
+                    {
+                        <option class='m_n_option' value='@item.ID'>@item.getName()</option>
+                    }
+                }
+            </select>
+        </td>
+        <td>
+            <p class='btn btn-default m_n_add_option'>Add</p>
+        </td>
+    </tr>
+</table>

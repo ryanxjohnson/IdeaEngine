@@ -1,0 +1,5 @@
+﻿@model ProjectEditViewModel
+
+<div class="form-group" style="display: table-row">
+    @Html.TextAreaFor(model => model.NewNote, new { @class = "form-control", @placeholder = "Add a note", @cols = 100, rows = 3 })
+</div>

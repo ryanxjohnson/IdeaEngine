@@ -1,0 +1,41 @@
+﻿@model EmissaryDetailsViewModel
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            <p>
+                @Html.DisplayFor(model => model.Name)
+            </p>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Domain_ID)
+        </dt>
+        <dd>
+            <p>
+                @Html.DisplayFor(model => model.Domain_ID)
+            </p>
+        </dd>
+
+        <dt>
+            @Html.Label("Administrator")
+        </dt>
+        <dd>
+            @Html.ToYesNoString(Model.Admin)
+        </dd>
+        <dt>
+            @Html.Label("Ambassador ")
+        </dt>
+        <dd>
+            @Html.ToYesNoString(Model.Ambassador)
+        </dd>
+
+        @Html.Partial("_M_N_Details", new ProjectTuple(Model.Projects))
+
+        @Html.Partial("_M_N_Details", new SchoolTuple(Model.Schools))
+
+    </dl>
+</div>

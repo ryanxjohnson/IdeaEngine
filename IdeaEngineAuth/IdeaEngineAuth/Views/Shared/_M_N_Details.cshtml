@@ -1,0 +1,12 @@
+﻿@model M_N_Tuple
+
+<dt>@Model.getLable()</dt>
+<dd>
+@if ( Model.Item1 != null && Model.Item1.Any() )
+{
+    foreach (var item in Model.Item1)
+    {
+        <div>@item.getName()</div>
+    }
+}
+</dd>

@@ -1,0 +1,68 @@
+﻿@model HasCurrentUser
+
+@{
+    CurrentUser CurrentUser = Model.getCurrentUser();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Idea Engine</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="idea_engine_body">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="~/" class="idea_engine_header">
+                    Idea Engine
+                    <img src="http://commercebank.com/images/logos/newlogo-landingpage.gif">
+                </a>
+            </div>
+            <div class="navbar-collapse collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    @if (CurrentUser.CanViewProjectList())
+                    {
+                        <li>@Html.ActionLink("Projects", "Index", "Project")</li>
+                    }
+                    @if (CurrentUser.CanViewEmissaryList())
+                    {
+                        <li>@Html.ActionLink("Emissaries", "Index", "Emissary")</li>
+                    }
+                    @if (CurrentUser.CanViewSchoolList())
+                    {
+                        <li>@Html.ActionLink("Schools", "Index", "School")</li>
+                    }
+                    <li>@Html.ActionLink("FAQ", "FAQ", "Download")</li>
+                </ul>
+                <p class="nav navbar-text navbar-right">
+                    Hello, @CurrentUser.Name! (@CurrentUser.premissionString())&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </p>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        <div align="center">
+            <div align="left" class="idea_engine_page_width">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - FDIC#</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

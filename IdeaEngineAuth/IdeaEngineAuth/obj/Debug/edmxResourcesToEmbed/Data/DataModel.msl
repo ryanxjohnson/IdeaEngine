@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Emissaries">
+      <EntityTypeMapping TypeName="DataModel.Emissary">
+        <MappingFragment StoreEntitySet="Emissary">
+          <ScalarProperty Name="Emissary_ID" ColumnName="Emissary_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmissaryDomainIDs">
+      <EntityTypeMapping TypeName="DataModel.EmissaryDomainID">
+        <MappingFragment StoreEntitySet="EmissaryDomainID">
+          <ScalarProperty Name="EmissaryRevision_ID" ColumnName="EmissaryRevision_ID" />
+          <ScalarProperty Name="Domain_ID" ColumnName="Domain_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmissaryNames">
+      <EntityTypeMapping TypeName="DataModel.EmissaryName">
+        <MappingFragment StoreEntitySet="EmissaryName">
+          <ScalarProperty Name="EmissaryRevision_ID" ColumnName="EmissaryRevision_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmissaryRevisions">
+      <EntityTypeMapping TypeName="DataModel.EmissaryRevision">
+        <MappingFragment StoreEntitySet="EmissaryRevision">
+          <ScalarProperty Name="EmissaryRevision_ID" ColumnName="EmissaryRevision_ID" />
+          <ScalarProperty Name="Revision_ID" ColumnName="Revision_ID" />
+          <ScalarProperty Name="Emissary_ID" ColumnName="Emissary_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmissarySchools">
+      <EntityTypeMapping TypeName="DataModel.EmissarySchool">
+        <MappingFragment StoreEntitySet="EmissarySchool">
+          <ScalarProperty Name="Revision_ID" ColumnName="Revision_ID" />
+          <ScalarProperty Name="Emissary_ID" ColumnName="Emissary_ID" />
+          <ScalarProperty Name="School_ID" ColumnName="School_ID" />
+          <ScalarProperty Name="Included" ColumnName="Included" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="DataModel.File">
+        <MappingFragment StoreEntitySet="File">
+          <ScalarProperty Name="File_ID" ColumnName="File_ID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="DataModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectDescriptions">
+      <EntityTypeMapping TypeName="DataModel.ProjectDescription">
+        <MappingFragment StoreEntitySet="ProjectDescription">
+          <ScalarProperty Name="ProjectRevision_ID" ColumnName="ProjectRevision_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectFiles">
+      <EntityTypeMapping TypeName="DataModel.ProjectFile">
+        <MappingFragment StoreEntitySet="ProjectFile">
+          <ScalarProperty Name="ProjectRevision_ID" ColumnName="ProjectRevision_ID" />
+          <ScalarProperty Name="File_ID" ColumnName="File_ID" />
+          <ScalarProperty Name="Included" ColumnName="Included" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectRevisions">
+      <EntityTypeMapping TypeName="DataModel.ProjectRevision">
+        <MappingFragment StoreEntitySet="ProjectRevision">
+          <ScalarProperty Name="ProjectRevision_ID" ColumnName="ProjectRevision_ID" />
+          <ScalarProperty Name="Revision_ID" ColumnName="Revision_ID" />
+          <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectStatus">
+      <EntityTypeMapping TypeName="DataModel.ProjectStatu">
+        <MappingFragment StoreEntitySet="ProjectStatus">
+          <ScalarProperty Name="ProjectRevision_ID" ColumnName="ProjectRevision_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectSummaries">
+      <EntityTypeMapping TypeName="DataModel.ProjectSummary">
+        <MappingFragment StoreEntitySet="ProjectSummary">
+          <ScalarProperty Name="ProjectRevision_ID" ColumnName="ProjectRevision_ID" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectTitles">
+      <EntityTypeMapping TypeName="DataModel.ProjectTitle">
+        <MappingFragment StoreEntitySet="ProjectTitle">
+          <ScalarProperty Name="ProjectRevision_ID" ColumnName="ProjectRevision_ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Revisions">
+      <EntityTypeMapping TypeName="DataModel.Revision">
+        <MappingFragment StoreEntitySet="Revision">
+          <ScalarProperty Name="Revision_ID" ColumnName="Revision_ID" />
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RevisionNotes">
+      <EntityTypeMapping TypeName="DataModel.RevisionNote">
+        <MappingFragment StoreEntitySet="RevisionNote">
+          <ScalarProperty Name="Revision_ID" ColumnName="Revision_ID" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schools">
+      <EntityTypeMapping TypeName="DataModel.School">
+        <MappingFragment StoreEntitySet="School">
+          <ScalarProperty Name="School_ID" ColumnName="School_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchoolContactEmails">
+      <EntityTypeMapping TypeName="DataModel.SchoolContactEmail">
+        <MappingFragment StoreEntitySet="SchoolContactEmail">
+          <ScalarProperty Name="SchoolRevision_ID" ColumnName="SchoolRevision_ID" />
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchoolContactNames">
+      <EntityTypeMapping TypeName="DataModel.SchoolContactName">
+        <MappingFragment StoreEntitySet="SchoolContactName">
+          <ScalarProperty Name="SchoolRevision_ID" ColumnName="SchoolRevision_ID" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchoolContactPhoneNumbers">
+      <EntityTypeMapping TypeName="DataModel.SchoolContactPhoneNumber">
+        <MappingFragment StoreEntitySet="SchoolContactPhoneNumber">
+          <ScalarProperty Name="SchoolRevision_ID" ColumnName="SchoolRevision_ID" />
+          <ScalarProperty Name="ContactPhoneNumber" ColumnName="ContactPhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchoolNames">
+      <EntityTypeMapping TypeName="DataModel.SchoolName">
+        <MappingFragment StoreEntitySet="SchoolName">
+          <ScalarProperty Name="SchoolRevision_ID" ColumnName="SchoolRevision_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchoolRevisions">
+      <EntityTypeMapping TypeName="DataModel.SchoolRevision">
+        <MappingFragment StoreEntitySet="SchoolRevision">
+          <ScalarProperty Name="SchoolRevision_ID" ColumnName="SchoolRevision_ID" />
+          <ScalarProperty Name="Revision_ID" ColumnName="Revision_ID" />
+          <ScalarProperty Name="School_ID" ColumnName="School_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentEmissarySchools">
+      <EntityTypeMapping TypeName="DataModel.CurrentEmissarySchool">
+        <MappingFragment StoreEntitySet="CurrentEmissarySchools">
+          <ScalarProperty Name="Emissary_ID" ColumnName="Emissary_ID" />
+          <ScalarProperty Name="School_ID" ColumnName="School_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentProjectEmissaries">
+      <EntityTypeMapping TypeName="DataModel.CurrentProjectEmissary">
+        <MappingFragment StoreEntitySet="CurrentProjectEmissaries">
+          <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+          <ScalarProperty Name="Emissary_ID" ColumnName="Emissary_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentSchoolProjects">
+      <EntityTypeMapping TypeName="DataModel.CurrentSchoolProject">
+        <MappingFragment StoreEntitySet="CurrentSchoolProjects">
+          <ScalarProperty Name="DateAssigned" ColumnName="DateAssigned" />
+          <ScalarProperty Name="School_ID" ColumnName="School_ID" />
+          <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentProjectFiles">
+      <EntityTypeMapping TypeName="DataModel.CurrentProjectFile">
+        <MappingFragment StoreEntitySet="CurrentProjectFiles">
+          <ScalarProperty Name="File_ID" ColumnName="File_ID" />
+          <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmissaryAdmins">
+      <EntityTypeMapping TypeName="DataModel.EmissaryAdmin">
+        <MappingFragment StoreEntitySet="EmissaryAdmin">
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="EmissaryRevision_ID" ColumnName="EmissaryRevision_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmissaryAmbassadors">
+      <EntityTypeMapping TypeName="DataModel.EmissaryAmbassador">
+        <MappingFragment StoreEntitySet="EmissaryAmbassador">
+          <ScalarProperty Name="Ambassador" ColumnName="Ambassador" />
+          <ScalarProperty Name="EmissaryRevision_ID" ColumnName="EmissaryRevision_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentFileDatas">
+      <EntityTypeMapping TypeName="DataModel.CurrentFileData">
+        <MappingFragment StoreEntitySet="CurrentFileData">
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentProjectDatas">
+      <EntityTypeMapping TypeName="DataModel.CurrentProjectData">
+        <MappingFragment StoreEntitySet="CurrentProjectData">
+          <ScalarProperty Name="School_ID" ColumnName="School_ID" />
+          <ScalarProperty Name="DateAssigned" ColumnName="DateAssigned" />
+          <ScalarProperty Name="DateSubmitted" ColumnName="DateSubmitted" />
+          <ScalarProperty Name="Contributor_ID" ColumnName="Contributor_ID" />
+          <ScalarProperty Name="Revisor_ID" ColumnName="Revisor_ID" />
+          <ScalarProperty Name="DateRevised" ColumnName="DateRevised" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentSchoolDatas">
+      <EntityTypeMapping TypeName="DataModel.CurrentSchoolData">
+        <MappingFragment StoreEntitySet="CurrentSchoolData">
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+          <ScalarProperty Name="ContactPhoneNumber" ColumnName="ContactPhoneNumber" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmissaryProjects">
+      <EntityTypeMapping TypeName="DataModel.EmissaryProject">
+        <MappingFragment StoreEntitySet="EmissaryProject">
+          <ScalarProperty Name="Included" ColumnName="Included" />
+          <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+          <ScalarProperty Name="Emissary_ID" ColumnName="Emissary_ID" />
+          <ScalarProperty Name="Revision_ID" ColumnName="Revision_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchoolProjects">
+      <EntityTypeMapping TypeName="DataModel.SchoolProject">
+        <MappingFragment StoreEntitySet="SchoolProject">
+          <ScalarProperty Name="Included" ColumnName="Included" />
+          <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+          <ScalarProperty Name="School_ID" ColumnName="School_ID" />
+          <ScalarProperty Name="Revision_ID" ColumnName="Revision_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentEmissaryDatas">
+      <EntityTypeMapping TypeName="DataModel.CurrentEmissaryData">
+        <MappingFragment StoreEntitySet="CurrentEmissaryData">
+          <ScalarProperty Name="Ambassador" ColumnName="Ambassador" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Domain_ID" ColumnName="Domain_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentFileStatus">
+      <EntityTypeMapping TypeName="DataModel.CurrentFileStatu">
+        <MappingFragment StoreEntitySet="CurrentFileStatus">
+          <ScalarProperty Name="Archived" ColumnName="Archived" />
+          <ScalarProperty Name="File_ID" ColumnName="File_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentProjectNotes">
+      <EntityTypeMapping TypeName="DataModel.CurrentProjectNote">
+        <MappingFragment StoreEntitySet="CurrentProjectNotes">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

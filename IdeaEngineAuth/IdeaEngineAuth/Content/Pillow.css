@@ -1,0 +1,99 @@
+﻿a {
+	text-decoration: none;
+}
+td.lamplist {
+	outline:none;
+}
+td.lamplist strong {
+	line-height:	10px;
+}
+td.lamplist:hover {
+	text-decoration: none;
+}
+td.lamplist span {
+	font:caption;
+    float: left;
+	z-index: 10;
+	display: none;
+	padding: 14px 20px;
+	margin-top: 43px;
+	margin-left: 60px;
+	max-width: 300px;
+	line-height: 16px;
+    position:   absolute;
+    border:		1px;
+	border-color:gray;
+    background: #faff8e;
+	/* solid:		#DCA; */
+    visibility:hidden;
+    opacity:0;
+
+}
+td.lamplist:hover span {
+	display:	inline;
+    opacity: 1;
+    text-decoration: none;
+    visibility: visible;
+    overflow-wrap: break-word;
+    display: inline;
+    transition-property:visibility;
+    transition-delay: 1.2s;
+    transition-duration:1.2s;
+    white-space: normal;
+} 
+table.container {
+	background:lime;
+	border-spacing: 3px;
+}
+table.info {
+	background:teal;
+}
+td.desc {
+	background:orange;
+}
+td.summ {
+	background:maroon;
+}
+th {
+	text-align: left;
+}
+input:focus {
+	background-color:#CCFF99;
+}
+textarea{
+	width: 100%;
+	height: 100%;
+}
+textarea:focus {
+	background-color:#CCFF99;
+}
+.project_summary {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    margin-top: -1px;
+}
+/* Style the textarea, making it take the full width of its containing element */
+.project_summary textarea {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-right: 1px dashed #ccc;
+    font-family: inherit;
+    font-size: 1em;
+    position: relative;
+    z-index: 2;
+    overflow: auto;
+    resize: none;
+}
+/* Put the label text under the textarea */
+.project_summary span.label {
+    position: absolute;
+    left: -.4em;
+    top: 0;
+}
+
+a.nachor {
+    background:teal;
+}

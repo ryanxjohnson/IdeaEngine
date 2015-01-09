@@ -1,0 +1,21 @@
+﻿@model HasPermissions
+
+<div class="idea_engine_icon btn-block" style="float:left">
+    @if (Model.CanViewDetails())
+    {
+        
+            @Html.ActionLink("Details", "Details", new { id = Model.ID }, htmlAttributes: new { @style = "color:black; text-decoration:none" })
+        
+    }
+    @if (Model.CanEdit())
+    {
+       
+         @: | @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, htmlAttributes: new { @style = "color:black; text-decoration:none" })
+    }
+        @if (Model.CanDelete())
+        {
+            
+         @: | @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, htmlAttributes: new { @style = "color:red; text-decoration:none" })
+            
+        }
+</div>

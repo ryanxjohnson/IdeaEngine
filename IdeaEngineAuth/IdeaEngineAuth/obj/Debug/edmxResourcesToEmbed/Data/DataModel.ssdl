@@ -1,0 +1,936 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Emissary">
+    <Key>
+      <PropertyRef Name="Emissary_ID" />
+    </Key>
+    <Property Name="Emissary_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmissaryAdmin">
+    <Key>
+      <PropertyRef Name="EmissaryRevision_ID" />
+    </Key>
+    <Property Name="EmissaryRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Admin" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmissaryAmbassador">
+    <Key>
+      <PropertyRef Name="EmissaryRevision_ID" />
+    </Key>
+    <Property Name="EmissaryRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Ambassador" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmissaryDomainID">
+    <Key>
+      <PropertyRef Name="EmissaryRevision_ID" />
+    </Key>
+    <Property Name="EmissaryRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Domain_ID" Type="nvarchar" MaxLength="4000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmissaryName">
+    <Key>
+      <PropertyRef Name="EmissaryRevision_ID" />
+    </Key>
+    <Property Name="EmissaryRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmissaryProject">
+    <Key>
+      <PropertyRef Name="Revision_ID" />
+      <PropertyRef Name="Emissary_ID" />
+      <PropertyRef Name="Project_ID" />
+    </Key>
+    <Property Name="Revision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Emissary_ID" Type="bigint" Nullable="false" />
+    <Property Name="Project_ID" Type="bigint" Nullable="false" />
+    <Property Name="Included" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmissaryRevision">
+    <Key>
+      <PropertyRef Name="EmissaryRevision_ID" />
+    </Key>
+    <Property Name="EmissaryRevision_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Revision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Emissary_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmissarySchool">
+    <Key>
+      <PropertyRef Name="Revision_ID" />
+      <PropertyRef Name="Emissary_ID" />
+      <PropertyRef Name="School_ID" />
+    </Key>
+    <Property Name="Revision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Emissary_ID" Type="bigint" Nullable="false" />
+    <Property Name="School_ID" Type="bigint" Nullable="false" />
+    <Property Name="Included" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="File">
+    <Key>
+      <PropertyRef Name="File_ID" />
+    </Key>
+    <Property Name="File_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="FilePath" Type="nvarchar" MaxLength="4000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Project_ID" />
+    </Key>
+    <Property Name="Project_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectDescription">
+    <Key>
+      <PropertyRef Name="ProjectRevision_ID" />
+    </Key>
+    <Property Name="ProjectRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectFile">
+    <Key>
+      <PropertyRef Name="ProjectRevision_ID" />
+      <PropertyRef Name="File_ID" />
+    </Key>
+    <Property Name="ProjectRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="File_ID" Type="bigint" Nullable="false" />
+    <Property Name="Included" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectRevision">
+    <Key>
+      <PropertyRef Name="ProjectRevision_ID" />
+    </Key>
+    <Property Name="ProjectRevision_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Revision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Project_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectStatus">
+    <Key>
+      <PropertyRef Name="ProjectRevision_ID" />
+    </Key>
+    <Property Name="ProjectRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Status" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectSummary">
+    <Key>
+      <PropertyRef Name="ProjectRevision_ID" />
+    </Key>
+    <Property Name="ProjectRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Summary" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectTitle">
+    <Key>
+      <PropertyRef Name="ProjectRevision_ID" />
+    </Key>
+    <Property Name="ProjectRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Title" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Revision">
+    <Key>
+      <PropertyRef Name="Revision_ID" />
+    </Key>
+    <Property Name="Revision_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee_ID" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RevisionNote">
+    <Key>
+      <PropertyRef Name="Revision_ID" />
+    </Key>
+    <Property Name="Revision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Note" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="School">
+    <Key>
+      <PropertyRef Name="School_ID" />
+    </Key>
+    <Property Name="School_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchoolContactEmail">
+    <Key>
+      <PropertyRef Name="SchoolRevision_ID" />
+    </Key>
+    <Property Name="SchoolRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="ContactEmail" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchoolContactName">
+    <Key>
+      <PropertyRef Name="SchoolRevision_ID" />
+    </Key>
+    <Property Name="SchoolRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="ContactName" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchoolContactPhoneNumber">
+    <Key>
+      <PropertyRef Name="SchoolRevision_ID" />
+    </Key>
+    <Property Name="SchoolRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="ContactPhoneNumber" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchoolName">
+    <Key>
+      <PropertyRef Name="SchoolRevision_ID" />
+    </Key>
+    <Property Name="SchoolRevision_ID" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchoolProject">
+    <Key>
+      <PropertyRef Name="Revision_ID" />
+      <PropertyRef Name="School_ID" />
+      <PropertyRef Name="Project_ID" />
+    </Key>
+    <Property Name="Revision_ID" Type="bigint" Nullable="false" />
+    <Property Name="School_ID" Type="bigint" Nullable="false" />
+    <Property Name="Project_ID" Type="bigint" Nullable="false" />
+    <Property Name="Included" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchoolRevision">
+    <Key>
+      <PropertyRef Name="SchoolRevision_ID" />
+    </Key>
+    <Property Name="SchoolRevision_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Revision_ID" Type="bigint" Nullable="false" />
+    <Property Name="School_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrentEmissaryData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="Domain_ID" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Name" Type="ntext" />
+    <Property Name="Admin" Type="bit" />
+    <Property Name="Ambassador" Type="bit" />
+  </EntityType>
+  <EntityType Name="CurrentEmissarySchools">
+    <Key>
+      <PropertyRef Name="Emissary_ID" />
+      <PropertyRef Name="School_ID" />
+    </Key>
+    <Property Name="Emissary_ID" Type="bigint" Nullable="false" />
+    <Property Name="School_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrentFileData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="FilePath" Type="nvarchar" MaxLength="4000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrentFileStatus">
+    <Key>
+      <PropertyRef Name="File_ID" />
+    </Key>
+    <Property Name="File_ID" Type="bigint" Nullable="false" />
+    <Property Name="Archived" Type="int" />
+  </EntityType>
+  <EntityType Name="CurrentProjectData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="Title" Type="ntext" />
+    <Property Name="Summary" Type="ntext" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="Status" Type="ntext" />
+    <Property Name="DateRevised" Type="datetime2" Precision="7" />
+    <Property Name="Revisor_ID" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Contributor_ID" Type="nvarchar" MaxLength="4000" />
+    <Property Name="DateSubmitted" Type="datetime2" Precision="7" />
+    <Property Name="DateAssigned" Type="datetime2" Precision="7" />
+    <Property Name="School_ID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="CurrentProjectEmissaries">
+    <Key>
+      <PropertyRef Name="Project_ID" />
+      <PropertyRef Name="Emissary_ID" />
+    </Key>
+    <Property Name="Project_ID" Type="bigint" Nullable="false" />
+    <Property Name="Emissary_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrentProjectFiles">
+    <Key>
+      <PropertyRef Name="Project_ID" />
+      <PropertyRef Name="File_ID" />
+    </Key>
+    <Property Name="Project_ID" Type="bigint" Nullable="false" />
+    <Property Name="File_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrentProjectNotes">
+    <Key>
+      <PropertyRef Name="Project_ID" />
+      <PropertyRef Name="Note" />
+      <PropertyRef Name="Employee_ID" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Project_ID" Type="bigint" Nullable="false" />
+    <Property Name="Note" Type="ntext" Nullable="false" />
+    <Property Name="Employee_ID" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrentSchoolData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="ntext" />
+    <Property Name="ContactName" Type="ntext" />
+    <Property Name="ContactPhoneNumber" Type="bigint" />
+    <Property Name="ContactEmail" Type="ntext" />
+  </EntityType>
+  <EntityType Name="CurrentSchoolProjects">
+    <Key>
+      <PropertyRef Name="Project_ID" />
+      <PropertyRef Name="School_ID" />
+    </Key>
+    <Property Name="Project_ID" Type="bigint" Nullable="false" />
+    <Property Name="School_ID" Type="bigint" Nullable="false" />
+    <Property Name="DateAssigned" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__EmissaryA__Emiss__0B7CAB7B">
+    <End Role="EmissaryRevision" Type="Self.EmissaryRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissaryAdmin" Type="Self.EmissaryAdmin" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EmissaryRevision">
+        <PropertyRef Name="EmissaryRevision_ID" />
+      </Principal>
+      <Dependent Role="EmissaryAdmin">
+        <PropertyRef Name="EmissaryRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmissaryA__Emiss__0E591826">
+    <End Role="EmissaryRevision" Type="Self.EmissaryRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissaryAmbassador" Type="Self.EmissaryAmbassador" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EmissaryRevision">
+        <PropertyRef Name="EmissaryRevision_ID" />
+      </Principal>
+      <Dependent Role="EmissaryAmbassador">
+        <PropertyRef Name="EmissaryRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmissaryD__Emiss__2FEF161B">
+    <End Role="EmissaryRevision" Type="Self.EmissaryRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissaryDomainID" Type="Self.EmissaryDomainID" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EmissaryRevision">
+        <PropertyRef Name="EmissaryRevision_ID" />
+      </Principal>
+      <Dependent Role="EmissaryDomainID">
+        <PropertyRef Name="EmissaryRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmissaryN__Emiss__7B7B4DDC">
+    <End Role="EmissaryRevision" Type="Self.EmissaryRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissaryName" Type="Self.EmissaryName" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EmissaryRevision">
+        <PropertyRef Name="EmissaryRevision_ID" />
+      </Principal>
+      <Dependent Role="EmissaryName">
+        <PropertyRef Name="EmissaryRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmissaryP__Emiss__3572E547">
+    <End Role="Emissary" Type="Self.Emissary" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissaryProject" Type="Self.EmissaryProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emissary">
+        <PropertyRef Name="Emissary_ID" />
+      </Principal>
+      <Dependent Role="EmissaryProject">
+        <PropertyRef Name="Emissary_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmissaryP__Proje__36670980">
+    <End Role="Project" Type="Self.Project" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissaryProject" Type="Self.EmissaryProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Project_ID" />
+      </Principal>
+      <Dependent Role="EmissaryProject">
+        <PropertyRef Name="Project_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmissaryP__Revis__375B2DB9">
+    <End Role="Revision" Type="Self.Revision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissaryProject" Type="Self.EmissaryProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Revision">
+        <PropertyRef Name="Revision_ID" />
+      </Principal>
+      <Dependent Role="EmissaryProject">
+        <PropertyRef Name="Revision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmissaryR__Emiss__7D63964E">
+    <End Role="Emissary" Type="Self.Emissary" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissaryRevision" Type="Self.EmissaryRevision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emissary">
+        <PropertyRef Name="Emissary_ID" />
+      </Principal>
+      <Dependent Role="EmissaryRevision">
+        <PropertyRef Name="Emissary_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmissaryR__Revis__7E57BA87">
+    <End Role="Revision" Type="Self.Revision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissaryRevision" Type="Self.EmissaryRevision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Revision">
+        <PropertyRef Name="Revision_ID" />
+      </Principal>
+      <Dependent Role="EmissaryRevision">
+        <PropertyRef Name="Revision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmissaryS__Emiss__4AD81681">
+    <End Role="Emissary" Type="Self.Emissary" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissarySchool" Type="Self.EmissarySchool" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emissary">
+        <PropertyRef Name="Emissary_ID" />
+      </Principal>
+      <Dependent Role="EmissarySchool">
+        <PropertyRef Name="Emissary_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmissaryS__Revis__74CE504D">
+    <End Role="Revision" Type="Self.Revision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissarySchool" Type="Self.EmissarySchool" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Revision">
+        <PropertyRef Name="Revision_ID" />
+      </Principal>
+      <Dependent Role="EmissarySchool">
+        <PropertyRef Name="Revision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EmissaryS__Schoo__162F4418">
+    <End Role="School" Type="Self.School" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmissarySchool" Type="Self.EmissarySchool" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="School">
+        <PropertyRef Name="School_ID" />
+      </Principal>
+      <Dependent Role="EmissarySchool">
+        <PropertyRef Name="School_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProjectDe__Proje__0E8E2250">
+    <End Role="ProjectRevision" Type="Self.ProjectRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectDescription" Type="Self.ProjectDescription" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectRevision">
+        <PropertyRef Name="ProjectRevision_ID" />
+      </Principal>
+      <Dependent Role="ProjectDescription">
+        <PropertyRef Name="ProjectRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProjectFi__File___0BB1B5A5">
+    <End Role="File" Type="Self.File" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectFile" Type="Self.ProjectFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="File">
+        <PropertyRef Name="File_ID" />
+      </Principal>
+      <Dependent Role="ProjectFile">
+        <PropertyRef Name="File_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProjectFi__Proje__0F824689">
+    <End Role="ProjectRevision" Type="Self.ProjectRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectFile" Type="Self.ProjectFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectRevision">
+        <PropertyRef Name="ProjectRevision_ID" />
+      </Principal>
+      <Dependent Role="ProjectFile">
+        <PropertyRef Name="ProjectRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProjectRe__Proje__0CA5D9DE">
+    <End Role="Project" Type="Self.Project" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectRevision" Type="Self.ProjectRevision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Project_ID" />
+      </Principal>
+      <Dependent Role="ProjectRevision">
+        <PropertyRef Name="Project_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProjectRe__Revis__1446FBA6">
+    <End Role="Revision" Type="Self.Revision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectRevision" Type="Self.ProjectRevision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Revision">
+        <PropertyRef Name="Revision_ID" />
+      </Principal>
+      <Dependent Role="ProjectRevision">
+        <PropertyRef Name="Revision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProjectSt__Proje__10766AC2">
+    <End Role="ProjectRevision" Type="Self.ProjectRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectStatus" Type="Self.ProjectStatus" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectRevision">
+        <PropertyRef Name="ProjectRevision_ID" />
+      </Principal>
+      <Dependent Role="ProjectStatus">
+        <PropertyRef Name="ProjectRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProjectSu__Proje__116A8EFB">
+    <End Role="ProjectRevision" Type="Self.ProjectRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectSummary" Type="Self.ProjectSummary" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectRevision">
+        <PropertyRef Name="ProjectRevision_ID" />
+      </Principal>
+      <Dependent Role="ProjectSummary">
+        <PropertyRef Name="ProjectRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProjectTi__Proje__125EB334">
+    <End Role="ProjectRevision" Type="Self.ProjectRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectTitle" Type="Self.ProjectTitle" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectRevision">
+        <PropertyRef Name="ProjectRevision_ID" />
+      </Principal>
+      <Dependent Role="ProjectTitle">
+        <PropertyRef Name="ProjectRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RevisionN__Revis__75C27486">
+    <End Role="Revision" Type="Self.Revision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RevisionNote" Type="Self.RevisionNote" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Revision">
+        <PropertyRef Name="Revision_ID" />
+      </Principal>
+      <Dependent Role="RevisionNote">
+        <PropertyRef Name="Revision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SchoolCon__Schoo__18178C8A">
+    <End Role="SchoolRevision" Type="Self.SchoolRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SchoolContactEmail" Type="Self.SchoolContactEmail" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SchoolRevision">
+        <PropertyRef Name="SchoolRevision_ID" />
+      </Principal>
+      <Dependent Role="SchoolContactEmail">
+        <PropertyRef Name="SchoolRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SchoolCon__Schoo__190BB0C3">
+    <End Role="SchoolRevision" Type="Self.SchoolRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SchoolContactName" Type="Self.SchoolContactName" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SchoolRevision">
+        <PropertyRef Name="SchoolRevision_ID" />
+      </Principal>
+      <Dependent Role="SchoolContactName">
+        <PropertyRef Name="SchoolRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SchoolCon__Schoo__52442E1F">
+    <End Role="SchoolRevision" Type="Self.SchoolRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SchoolContactPhoneNumber" Type="Self.SchoolContactPhoneNumber" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SchoolRevision">
+        <PropertyRef Name="SchoolRevision_ID" />
+      </Principal>
+      <Dependent Role="SchoolContactPhoneNumber">
+        <PropertyRef Name="SchoolRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SchoolNam__Schoo__1AF3F935">
+    <End Role="SchoolRevision" Type="Self.SchoolRevision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SchoolName" Type="Self.SchoolName" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SchoolRevision">
+        <PropertyRef Name="SchoolRevision_ID" />
+      </Principal>
+      <Dependent Role="SchoolName">
+        <PropertyRef Name="SchoolRevision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SchoolPro__Proje__3943762B">
+    <End Role="Project" Type="Self.Project" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SchoolProject" Type="Self.SchoolProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Project_ID" />
+      </Principal>
+      <Dependent Role="SchoolProject">
+        <PropertyRef Name="Project_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SchoolPro__Revis__3A379A64">
+    <End Role="Revision" Type="Self.Revision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SchoolProject" Type="Self.SchoolProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Revision">
+        <PropertyRef Name="Revision_ID" />
+      </Principal>
+      <Dependent Role="SchoolProject">
+        <PropertyRef Name="Revision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SchoolPro__Schoo__384F51F2">
+    <End Role="School" Type="Self.School" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SchoolProject" Type="Self.SchoolProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="School">
+        <PropertyRef Name="School_ID" />
+      </Principal>
+      <Dependent Role="SchoolProject">
+        <PropertyRef Name="School_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SchoolRev__Revis__1BE81D6E">
+    <End Role="Revision" Type="Self.Revision" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SchoolRevision" Type="Self.SchoolRevision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Revision">
+        <PropertyRef Name="Revision_ID" />
+      </Principal>
+      <Dependent Role="SchoolRevision">
+        <PropertyRef Name="Revision_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SchoolRev__Schoo__17236851">
+    <End Role="School" Type="Self.School" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SchoolRevision" Type="Self.SchoolRevision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="School">
+        <PropertyRef Name="School_ID" />
+      </Principal>
+      <Dependent Role="SchoolRevision">
+        <PropertyRef Name="School_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="Emissary" EntityType="Self.Emissary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmissaryAdmin" EntityType="Self.EmissaryAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmissaryAmbassador" EntityType="Self.EmissaryAmbassador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmissaryDomainID" EntityType="Self.EmissaryDomainID" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmissaryName" EntityType="Self.EmissaryName" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmissaryProject" EntityType="Self.EmissaryProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmissaryRevision" EntityType="Self.EmissaryRevision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmissarySchool" EntityType="Self.EmissarySchool" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="File" EntityType="Self.File" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectDescription" EntityType="Self.ProjectDescription" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectFile" EntityType="Self.ProjectFile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectRevision" EntityType="Self.ProjectRevision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectStatus" EntityType="Self.ProjectStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectSummary" EntityType="Self.ProjectSummary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectTitle" EntityType="Self.ProjectTitle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Revision" EntityType="Self.Revision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RevisionNote" EntityType="Self.RevisionNote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="School" EntityType="Self.School" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolContactEmail" EntityType="Self.SchoolContactEmail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolContactName" EntityType="Self.SchoolContactName" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolContactPhoneNumber" EntityType="Self.SchoolContactPhoneNumber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolName" EntityType="Self.SchoolName" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolProject" EntityType="Self.SchoolProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolRevision" EntityType="Self.SchoolRevision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CurrentEmissaryData" EntityType="Self.CurrentEmissaryData" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CurrentEmissaryData].[ID] AS [ID], 
+    [CurrentEmissaryData].[Domain_ID] AS [Domain_ID], 
+    [CurrentEmissaryData].[Name] AS [Name], 
+    [CurrentEmissaryData].[Admin] AS [Admin], 
+    [CurrentEmissaryData].[Ambassador] AS [Ambassador]
+    FROM [dbo].[CurrentEmissaryData] AS [CurrentEmissaryData]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CurrentEmissarySchools" EntityType="Self.CurrentEmissarySchools" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CurrentEmissarySchools].[Emissary_ID] AS [Emissary_ID], 
+    [CurrentEmissarySchools].[School_ID] AS [School_ID]
+    FROM [dbo].[CurrentEmissarySchools] AS [CurrentEmissarySchools]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CurrentFileData" EntityType="Self.CurrentFileData" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CurrentFileData].[ID] AS [ID], 
+    [CurrentFileData].[FileName] AS [FileName], 
+    [CurrentFileData].[FilePath] AS [FilePath]
+    FROM [dbo].[CurrentFileData] AS [CurrentFileData]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CurrentFileStatus" EntityType="Self.CurrentFileStatus" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CurrentFileStatus].[File_ID] AS [File_ID], 
+    [CurrentFileStatus].[Archived] AS [Archived]
+    FROM [dbo].[CurrentFileStatus] AS [CurrentFileStatus]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CurrentProjectData" EntityType="Self.CurrentProjectData" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CurrentProjectData].[ID] AS [ID], 
+    [CurrentProjectData].[Title] AS [Title], 
+    [CurrentProjectData].[Summary] AS [Summary], 
+    [CurrentProjectData].[Description] AS [Description], 
+    [CurrentProjectData].[Status] AS [Status], 
+    [CurrentProjectData].[DateRevised] AS [DateRevised], 
+    [CurrentProjectData].[Revisor_ID] AS [Revisor_ID], 
+    [CurrentProjectData].[Contributor_ID] AS [Contributor_ID], 
+    [CurrentProjectData].[DateSubmitted] AS [DateSubmitted], 
+    [CurrentProjectData].[DateAssigned] AS [DateAssigned], 
+    [CurrentProjectData].[School_ID] AS [School_ID]
+    FROM [dbo].[CurrentProjectData] AS [CurrentProjectData]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CurrentProjectEmissaries" EntityType="Self.CurrentProjectEmissaries" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CurrentProjectEmissaries].[Project_ID] AS [Project_ID], 
+    [CurrentProjectEmissaries].[Emissary_ID] AS [Emissary_ID]
+    FROM [dbo].[CurrentProjectEmissaries] AS [CurrentProjectEmissaries]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CurrentProjectFiles" EntityType="Self.CurrentProjectFiles" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CurrentProjectFiles].[Project_ID] AS [Project_ID], 
+    [CurrentProjectFiles].[File_ID] AS [File_ID]
+    FROM [dbo].[CurrentProjectFiles] AS [CurrentProjectFiles]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CurrentProjectNotes" EntityType="Self.CurrentProjectNotes" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CurrentProjectNotes].[Project_ID] AS [Project_ID], 
+    [CurrentProjectNotes].[Note] AS [Note], 
+    [CurrentProjectNotes].[Employee_ID] AS [Employee_ID], 
+    [CurrentProjectNotes].[Date] AS [Date]
+    FROM [dbo].[CurrentProjectNotes] AS [CurrentProjectNotes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CurrentSchoolData" EntityType="Self.CurrentSchoolData" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CurrentSchoolData].[ID] AS [ID], 
+    [CurrentSchoolData].[Name] AS [Name], 
+    [CurrentSchoolData].[ContactName] AS [ContactName], 
+    [CurrentSchoolData].[ContactPhoneNumber] AS [ContactPhoneNumber], 
+    [CurrentSchoolData].[ContactEmail] AS [ContactEmail]
+    FROM [dbo].[CurrentSchoolData] AS [CurrentSchoolData]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CurrentSchoolProjects" EntityType="Self.CurrentSchoolProjects" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CurrentSchoolProjects].[Project_ID] AS [Project_ID], 
+    [CurrentSchoolProjects].[School_ID] AS [School_ID], 
+    [CurrentSchoolProjects].[DateAssigned] AS [DateAssigned]
+    FROM [dbo].[CurrentSchoolProjects] AS [CurrentSchoolProjects]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__EmissaryA__Emiss__0B7CAB7B" Association="Self.FK__EmissaryA__Emiss__0B7CAB7B">
+      <End Role="EmissaryRevision" EntitySet="EmissaryRevision" />
+      <End Role="EmissaryAdmin" EntitySet="EmissaryAdmin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmissaryA__Emiss__0E591826" Association="Self.FK__EmissaryA__Emiss__0E591826">
+      <End Role="EmissaryRevision" EntitySet="EmissaryRevision" />
+      <End Role="EmissaryAmbassador" EntitySet="EmissaryAmbassador" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmissaryD__Emiss__2FEF161B" Association="Self.FK__EmissaryD__Emiss__2FEF161B">
+      <End Role="EmissaryRevision" EntitySet="EmissaryRevision" />
+      <End Role="EmissaryDomainID" EntitySet="EmissaryDomainID" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmissaryN__Emiss__7B7B4DDC" Association="Self.FK__EmissaryN__Emiss__7B7B4DDC">
+      <End Role="EmissaryRevision" EntitySet="EmissaryRevision" />
+      <End Role="EmissaryName" EntitySet="EmissaryName" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmissaryP__Emiss__3572E547" Association="Self.FK__EmissaryP__Emiss__3572E547">
+      <End Role="Emissary" EntitySet="Emissary" />
+      <End Role="EmissaryProject" EntitySet="EmissaryProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmissaryP__Proje__36670980" Association="Self.FK__EmissaryP__Proje__36670980">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="EmissaryProject" EntitySet="EmissaryProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmissaryP__Revis__375B2DB9" Association="Self.FK__EmissaryP__Revis__375B2DB9">
+      <End Role="Revision" EntitySet="Revision" />
+      <End Role="EmissaryProject" EntitySet="EmissaryProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmissaryR__Emiss__7D63964E" Association="Self.FK__EmissaryR__Emiss__7D63964E">
+      <End Role="Emissary" EntitySet="Emissary" />
+      <End Role="EmissaryRevision" EntitySet="EmissaryRevision" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmissaryR__Revis__7E57BA87" Association="Self.FK__EmissaryR__Revis__7E57BA87">
+      <End Role="Revision" EntitySet="Revision" />
+      <End Role="EmissaryRevision" EntitySet="EmissaryRevision" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmissaryS__Emiss__4AD81681" Association="Self.FK__EmissaryS__Emiss__4AD81681">
+      <End Role="Emissary" EntitySet="Emissary" />
+      <End Role="EmissarySchool" EntitySet="EmissarySchool" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmissaryS__Revis__74CE504D" Association="Self.FK__EmissaryS__Revis__74CE504D">
+      <End Role="Revision" EntitySet="Revision" />
+      <End Role="EmissarySchool" EntitySet="EmissarySchool" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EmissaryS__Schoo__162F4418" Association="Self.FK__EmissaryS__Schoo__162F4418">
+      <End Role="School" EntitySet="School" />
+      <End Role="EmissarySchool" EntitySet="EmissarySchool" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProjectDe__Proje__0E8E2250" Association="Self.FK__ProjectDe__Proje__0E8E2250">
+      <End Role="ProjectRevision" EntitySet="ProjectRevision" />
+      <End Role="ProjectDescription" EntitySet="ProjectDescription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProjectFi__File___0BB1B5A5" Association="Self.FK__ProjectFi__File___0BB1B5A5">
+      <End Role="File" EntitySet="File" />
+      <End Role="ProjectFile" EntitySet="ProjectFile" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProjectFi__Proje__0F824689" Association="Self.FK__ProjectFi__Proje__0F824689">
+      <End Role="ProjectRevision" EntitySet="ProjectRevision" />
+      <End Role="ProjectFile" EntitySet="ProjectFile" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProjectRe__Proje__0CA5D9DE" Association="Self.FK__ProjectRe__Proje__0CA5D9DE">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectRevision" EntitySet="ProjectRevision" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProjectRe__Revis__1446FBA6" Association="Self.FK__ProjectRe__Revis__1446FBA6">
+      <End Role="Revision" EntitySet="Revision" />
+      <End Role="ProjectRevision" EntitySet="ProjectRevision" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProjectSt__Proje__10766AC2" Association="Self.FK__ProjectSt__Proje__10766AC2">
+      <End Role="ProjectRevision" EntitySet="ProjectRevision" />
+      <End Role="ProjectStatus" EntitySet="ProjectStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProjectSu__Proje__116A8EFB" Association="Self.FK__ProjectSu__Proje__116A8EFB">
+      <End Role="ProjectRevision" EntitySet="ProjectRevision" />
+      <End Role="ProjectSummary" EntitySet="ProjectSummary" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProjectTi__Proje__125EB334" Association="Self.FK__ProjectTi__Proje__125EB334">
+      <End Role="ProjectRevision" EntitySet="ProjectRevision" />
+      <End Role="ProjectTitle" EntitySet="ProjectTitle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RevisionN__Revis__75C27486" Association="Self.FK__RevisionN__Revis__75C27486">
+      <End Role="Revision" EntitySet="Revision" />
+      <End Role="RevisionNote" EntitySet="RevisionNote" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SchoolCon__Schoo__18178C8A" Association="Self.FK__SchoolCon__Schoo__18178C8A">
+      <End Role="SchoolRevision" EntitySet="SchoolRevision" />
+      <End Role="SchoolContactEmail" EntitySet="SchoolContactEmail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SchoolCon__Schoo__190BB0C3" Association="Self.FK__SchoolCon__Schoo__190BB0C3">
+      <End Role="SchoolRevision" EntitySet="SchoolRevision" />
+      <End Role="SchoolContactName" EntitySet="SchoolContactName" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SchoolCon__Schoo__52442E1F" Association="Self.FK__SchoolCon__Schoo__52442E1F">
+      <End Role="SchoolRevision" EntitySet="SchoolRevision" />
+      <End Role="SchoolContactPhoneNumber" EntitySet="SchoolContactPhoneNumber" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SchoolNam__Schoo__1AF3F935" Association="Self.FK__SchoolNam__Schoo__1AF3F935">
+      <End Role="SchoolRevision" EntitySet="SchoolRevision" />
+      <End Role="SchoolName" EntitySet="SchoolName" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SchoolPro__Proje__3943762B" Association="Self.FK__SchoolPro__Proje__3943762B">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="SchoolProject" EntitySet="SchoolProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SchoolPro__Revis__3A379A64" Association="Self.FK__SchoolPro__Revis__3A379A64">
+      <End Role="Revision" EntitySet="Revision" />
+      <End Role="SchoolProject" EntitySet="SchoolProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SchoolPro__Schoo__384F51F2" Association="Self.FK__SchoolPro__Schoo__384F51F2">
+      <End Role="School" EntitySet="School" />
+      <End Role="SchoolProject" EntitySet="SchoolProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SchoolRev__Revis__1BE81D6E" Association="Self.FK__SchoolRev__Revis__1BE81D6E">
+      <End Role="Revision" EntitySet="Revision" />
+      <End Role="SchoolRevision" EntitySet="SchoolRevision" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SchoolRev__Schoo__17236851" Association="Self.FK__SchoolRev__Schoo__17236851">
+      <End Role="School" EntitySet="School" />
+      <End Role="SchoolRevision" EntitySet="SchoolRevision" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

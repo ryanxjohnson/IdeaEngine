@@ -1,0 +1,12 @@
+﻿@model ProjectOverviewList
+
+
+    @Html.Partial("_ListSection", Model.Where(item => item.IsSubmitted()), new ViewDataDictionary() { { "title", "Submitted Ideas" } , {"table_id", "submitted"} })
+    <hr />
+    @Html.Partial("_ListSection", Model.Where(item => !item.IsSubmitted() && !item.IsArchived()), new ViewDataDictionary() { { "title", "Current Projects" }, { "table_id", "current" } })
+
+@if( Model.CurrentUser.IsAdmin())
+{
+    <hr />
+    @Html.Partial("_ListSection", Model.Where(item => item.IsArchived()), new ViewDataDictionary() { { "title", "Archived Projects" }, { "table_id", "archived" } })
+}

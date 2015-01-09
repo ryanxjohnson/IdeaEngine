@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Index";
+    String controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()??"";
+    if ( controller.Length > 1 )
+    {
+        controller = controller.Substring(0,1).ToUpper()+controller.Substring(1,controller.Length-1);
+    }
+}
+
+@if (Model.CanCreate())
+{
+    <div class="btn btn-default" align="center">
+        <a class="idea_engine_create idea_engine_header" style="font-size:30px;" href="~/@controller/Create">@controller</a> 
+    </div><br />
+}
+
+<hr />
+
+@Html.Partial("_List")
